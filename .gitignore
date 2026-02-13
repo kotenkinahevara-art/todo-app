@@ -1,2 +1,28 @@
-﻿.idea/
+﻿# dependencies
 node_modules/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# build output
+/dist/
+/build/
+
+# cache
+.sass-cache/
+.cache/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# env
+.env
+.env.*
