@@ -1,0 +1,102 @@
+﻿@use 'helpers' as *;
+
+html {
+  min-height: 100%;
+  background: var(--color-background);
+  overflow-x: hidden;
+
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
+body {
+  @include fluid-text(18, 14);
+
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base);
+  color: var(--color-gray-40);
+  background: var(--color-background);
+  overflow-x: hidden;
+  padding-inline: fluid(32, 16); // внешний зазор от краев окна
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-dark-50);
+  outline-offset: 2px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* iOS perf: disable heavy effects/animations for expandable panels */
+@supports (-webkit-touch-callout: none) {
+  .tasks__form-wrap,
+  .task-form__inline,
+  .task-form__priority-inline,
+  .task-form__time-inline,
+  .fp-custom-dropdown__panel {
+    transition: none !important;
+    transform: none !important;
+  }
+
+  .task-form__field,
+  .task-form__inline,
+  .task-form__priority-inline,
+  .task-form__time-inline,
+  .task-form__calendar-host .flatpickr-calendar,
+  .fp-custom-dropdown__panel,
+  .fp-custom-dropdown__trigger {
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .task-form__calendar-host,
+  .task-form__date-confirm,
+  .task-form__time-columns,
+  .task-form__time-confirm {
+    display: none !important;
+  }
+
+  input.task-form__native-picker[type='date'],
+  input.task-form__native-picker[type='time'] {
+    position: static !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    inline-size: 100%;
+    block-size: auto;
+  }
+}
+
+main {
+  flex-grow: 1;
+  width: 100%;
+}
+
+section {
+  padding-top: #{fluid(75, 55)};
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  font-family: var(--font-family-accent);
+  font-weight: 300;
+  color: var(--color-dark-50);
+  font-size: #{fluid(20, 16)};
+}

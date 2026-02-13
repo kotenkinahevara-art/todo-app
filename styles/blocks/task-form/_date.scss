@@ -1,0 +1,57 @@
+@use '../../helpers' as *;
+@use '../../variables' as *;
+
+.task-form {
+  &__date-group {
+    display: flex;
+    flex-direction: column;
+    gap: #{rem(12)};
+
+    &.is-expanded {
+      gap: 0;
+      border-radius: var(--border-radius);
+      background: var(--color-light-10);
+      box-shadow: $shadow-20;
+      overflow: visible;
+
+      .task-form__field {
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .task-form__inline {
+        border-radius: 0;
+        margin-top: 0;
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__inline {
+    border-radius: var(--border-radius);
+    background: var(--color-light-10);
+    box-shadow: $shadow-20;
+    padding: 0 #{rem(10)};
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(#{rem(-6)});
+    overflow: hidden;
+    transition: max-height 0.28s ease, opacity 0.2s ease, transform 0.2s ease, padding 0.28s ease;
+  }
+
+  &__inline.is-open {
+    padding: #{rem(10)};
+    max-height: #{rem(520)};
+    opacity: 1;
+    transform: translateY(0);
+    overflow: visible;
+  }
+
+  &__inline[hidden] {
+    display: none;
+  }
+
+  &__calendar-host {
+    min-height: #{rem(280)};
+  }
+}

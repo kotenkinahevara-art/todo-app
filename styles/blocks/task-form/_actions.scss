@@ -1,0 +1,45 @@
+@use '../../helpers' as *;
+@use '../../variables' as *;
+
+.task-form {
+  &__actions {
+    margin-top: fluid(75, 55);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: #{rem(12)};
+
+    @include from-mobile {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  &__action-button {
+    border: none;
+    border-radius: var(--border-radius);
+    padding-inline: fluid(20, 16);
+    padding-top: fluid(20, 16);
+    padding-bottom: fluid(26, 20);
+    cursor: pointer;
+    color: var(--color-gray-40);
+    font-family: var(--font-family-accent);
+    font-size: fluid(16, 14);
+    line-height: 1.2;
+    min-height: #{rem(52)};
+    text-align: center;
+    transition: var(--transition-duration);
+
+    @include hover {
+      background-color: var(--color-light-20);
+    }
+  }
+
+  &__action-button_theme_cancel {
+    background: var(--color-light-10);
+    box-shadow: $shadow-20;
+  }
+
+  &__action-button_theme_add {
+    background: var(--color-light-10);
+    box-shadow: $shadow-10;
+  }
+}

@@ -1,0 +1,9 @@
+@use '../helpers' as *;
+
+.section-title {
+  margin-bottom: fluid(45, 20);
+  font-family: var(--font-family-accent);
+  font-weight: 300;
+  font-size: fluid(20, 16);
+  color: var(--color-dark-50);
+}

@@ -1,0 +1,115 @@
+@use '../../helpers' as *;
+@use '../../variables' as *;
+
+.task-form {
+  &__time-group {
+    display: flex;
+    flex-direction: column;
+    gap: #{rem(12)};
+
+    &.is-expanded {
+      gap: 0;
+      border-radius: var(--border-radius);
+      background: var(--color-light-10);
+      box-shadow: $shadow-20;
+      overflow: visible;
+
+      .task-form__field {
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .task-form__time-inline {
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__time-inline {
+    border-radius: var(--border-radius);
+    background: var(--color-light-10);
+    box-shadow: $shadow-20;
+    padding: 0 #{rem(10)};
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(#{rem(-6)});
+    overflow: hidden;
+    transition: max-height 0.28s ease, opacity 0.2s ease, transform 0.2s ease, padding 0.28s ease;
+  }
+
+  &__time-inline.is-open {
+    padding: #{rem(10)};
+    max-height: #{rem(420)};
+    opacity: 1;
+    transform: translateY(0);
+    overflow: visible;
+  }
+
+  &__time-inline[hidden] {
+    display: none;
+  }
+
+  &__time-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: #{rem(10)};
+  }
+
+  &__time-column {
+    display: flex;
+    flex-direction: column;
+    gap: #{rem(8)};
+  }
+
+  &__time-column-title {
+    color: var(--color-gray-40);
+    font-family: var(--font-family-accent);
+    font-weight: 400;
+    font-size: fluid(18, 14);
+    padding: #{rem(8)} #{rem(12)};
+  }
+
+  &__time-list {
+    max-height: #{rem(180)};
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: #{rem(6)};
+    padding-right: #{rem(4)};
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gray-30) transparent;
+  }
+
+  &__time-list::-webkit-scrollbar {
+    width: #{rem(6)};
+  }
+
+  &__time-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &__time-list::-webkit-scrollbar-thumb {
+    background: rgba(181, 191, 198, 0.75);
+    border-radius: #{rem(8)};
+  }
+
+  &__time-option {
+    border: none;
+    border-radius: #{rem(10)};
+    background: var(--color-light);
+    color: var(--color-gray-40);
+    font-family: var(--font-family-accent);
+    font-weight: 400;
+    padding: #{rem(10)} #{rem(12)};
+    cursor: pointer;
+
+    @include hover {
+      background-color: var(--color-light-20);
+    }
+  }
+
+  &__time-option.is-selected {
+    background: var(--color-light-20);
+  }
+}

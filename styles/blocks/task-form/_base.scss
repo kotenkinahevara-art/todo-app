@@ -1,0 +1,11 @@
+@use '../../helpers' as *;
+
+.task-form {
+  padding: 0;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: fluid(35, 20);
+  }
+}

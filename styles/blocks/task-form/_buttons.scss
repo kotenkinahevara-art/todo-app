@@ -1,0 +1,22 @@
+@use '../../helpers' as *;
+@use '../../variables' as *;
+
+.task-form {
+  &__date-confirm,
+  &__time-confirm {
+    margin-top: fluid(35, 25);
+    width: 100%;
+    border: none;
+    border-radius: var(--border-radius);
+    padding: fluid(20, 16);
+    background: var(--color-light-10);
+    box-shadow: $shadow-10;
+    color: var(--color-gray-40);
+    cursor: pointer;
+    transition: var(--transition-duration);
+
+    @include hover {
+      background-color: var(--color-light-20);
+    }
+  }
+}

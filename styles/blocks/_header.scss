@@ -1,0 +1,31 @@
+@use '../variables' as *;
+@use '../helpers' as *;
+
+.header {
+  margin-top: fluid(45, 25);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: fluid(24, 16);
+  border-radius: var(--border-radius);
+
+  &__title {
+    font-family: var(--font-family-accent);
+    font-weight: 200;
+    color: var(--color-dark-50);
+    letter-spacing: 0.02em;
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(10);
+  }
+}
+
+.header_theme_soft {
+  background: var(--color-light-10);
+  border-radius: var(--border-radius);
+  box-shadow: $shadow-10;
+}

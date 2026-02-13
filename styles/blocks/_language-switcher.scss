@@ -1,0 +1,34 @@
+@use '../helpers' as *;
+@use '../variables' as *;
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: rem(6);
+  padding: rem(4);
+  border-radius: rem(14);
+  background: var(--color-light-10);
+  box-shadow: var(--shadow-20);
+
+  &__button {
+    border: none;
+    border-radius: rem(10);
+    padding: rem(6) rem(10);
+    background: transparent;
+    color: var(--color-gray-40);
+    font-family: var(--font-family-accent);
+    font-size: fluid(14, 12);
+    cursor: pointer;
+    transition: var(--transition-duration);
+
+    @include hover {
+      background-color: var(--color-light-20);
+    }
+  }
+
+  &__button_state_active {
+    background: var(--color-light-10);
+    box-shadow: var(--shadow-10);
+    color: var(--color-dark-50);
+  }
+}

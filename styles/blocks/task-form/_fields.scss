@@ -1,0 +1,92 @@
+@use '../../helpers' as *;
+@use '../../variables' as *;
+
+.task-form {
+  &__field {
+    border-radius: var(--border-radius);
+    background: var(--color-light-10);
+    box-shadow: $shadow-20;
+    min-height: #{rem(44)};
+    padding: #{rem(14)} #{rem(16)};
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: #{rem(10)};
+  }
+
+  &__field.is-filled {
+    grid-template-columns: 1fr auto;
+  }
+
+  &__field.is-focused {
+    grid-template-columns: 1fr auto;
+  }
+
+  &__field.is-filled &__field-label {
+    display: none;
+  }
+
+  &__field.is-focused &__field-label {
+    display: none;
+  }
+
+  &__field-label {
+    color: var(--color-gray-40);
+    white-space: nowrap;
+  }
+
+  &__text-input,
+  &__textarea,
+  &__picker {
+    width: 100%;
+    border: none;
+    background: transparent;
+    color: var(--color-gray-30);
+    text-align: right;
+    outline: none;
+    padding: 0;
+  }
+
+  &__picker {
+    cursor: pointer;
+  }
+
+  &__text-input {
+    color: var(--color-dark-50);
+    text-align: left;
+  }
+
+  &__textarea {
+    color: var(--color-dark-50);
+    text-align: left;
+    resize: vertical;
+    min-height: #{rem(64)};
+    max-height: #{rem(180)};
+    line-height: 1.35;
+  }
+
+  &__field_type_description {
+    align-items: start;
+    min-height: #{rem(108)};
+  }
+
+  &__field_type_description &__field-label {
+    padding-top: #{rem(4)};
+  }
+
+  &__field_type_description &__field-icon {
+    margin-top: #{rem(2)};
+  }
+
+  &__field_type_priority &__field-icon {
+    transform: rotate(90deg);
+  }
+
+  &__native-picker {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    inline-size: 0;
+    block-size: 0;
+  }
+}

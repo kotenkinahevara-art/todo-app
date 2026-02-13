@@ -1,0 +1,18 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "private": true,
+  "scripts": {
+    "css:build": "sass styles/main.scss styles/main.css --no-source-map",
+    "css:watch": "sass --watch styles/main.scss:styles/main.css --no-source-map"
+  },
+  "devDependencies": {
+    "sass": "^1.80.6"
+  },
+  "dependencies": {
+    "flatpickr": "^4.6.13"
+  }
+}
