@@ -1,6 +1,5 @@
 import { getEmptyValue, formatDate } from './formatters.js';
 import { getLocale, onI18nChange, t } from '../../i18n/index.js';
-import { isIOS } from '../../utils/platform.js';
 import { closeExpandable, openExpandable } from './expandable.js';
 
 const YEAR_RANGE = 30;
@@ -264,11 +263,6 @@ export const createDateField = (dom) => {
   };
 
   const toggle = () => {
-    if (isIOS()) {
-      dateInput?.showPicker?.();
-      dateInput?.focus?.();
-      return true;
-    }
     if (isOpen()) {
       close();
       return false;
@@ -293,34 +287,6 @@ export const createDateField = (dom) => {
 
   const init = () => {
     if (!flatpickrApi || !dateInput) return;
-
-    const ios = isIOS();
-    if (ios) {
-      dateInput.type = 'date';
-      if (dateInlineWrap) {
-        dateInlineWrap.hidden = false;
-        dateInlineWrap.classList.add('is-open');
-      }
-      if (dateGroup) {
-        dateGroup.classList.add('is-expanded');
-      }
-      if (dateTrigger) {
-        dateTrigger.setAttribute('aria-expanded', 'true');
-      }
-      dateInlineWrap?.setAttribute('role', 'region');
-      dateInlineWrap?.setAttribute('aria-label', t('task.date'));
-      dateInput.addEventListener('change', () => {
-        if (dateText) {
-          dateText.textContent = formatDate(dateInput.value);
-        }
-      });
-      onI18nChange(() => {
-        if (!dateInput.value && dateText) {
-          dateText.textContent = getEmptyValue();
-        }
-      });
-      return;
-    }
 
     if (dateInlineWrap) {
       dateInlineWrap.setAttribute('role', 'region');

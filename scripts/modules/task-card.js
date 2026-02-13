@@ -2,7 +2,6 @@
 import { toggleTaskCompletion, deleteTask, updateTask } from './task-manager.js';
 import { openExpandable, closeExpandable } from './task-form/expandable.js';
 import { getLocale, t } from '../i18n/index.js';
-import { isIOS } from '../utils/platform.js';
 import { COLLAPSE_MS, PRIORITY_RANKS } from './task-card/constants.js';
 import { formatTaskDate, getPriorityLabel, getPriorityRank, isKnownPriority } from './task-card/utils.js';
 
@@ -165,7 +164,6 @@ export const createTaskCard = (taskData) => {
 const createEditForm = (taskData, card) => {
   const { id, title, description = '', priority = 'medium', date, time } = taskData;
   const { flatpickr } = window;
-  const ios = isIOS();
   let dateCollapseTimerId = null;
   let timeCollapseTimerId = null;
   let priorityCollapseTimerId = null;
@@ -306,7 +304,7 @@ const createEditForm = (taskData, card) => {
   dateInlineWrap.setAttribute('aria-label', t('task.date'));
   
   const dateInput = document.createElement('input');
-  dateInput.type = ios ? 'date' : 'text';
+  dateInput.type = 'text';
   dateInput.className = 'task-form__native-picker';
   dateInput.value = date || '';
   
@@ -328,13 +326,6 @@ const createEditForm = (taskData, card) => {
   dateTrigger.setAttribute('aria-haspopup', 'dialog');
   dateTrigger.setAttribute('aria-expanded', 'false');
   dateTrigger.setAttribute('aria-controls', dateInlineId);
-
-  if (ios) {
-    dateInlineWrap.hidden = false;
-    dateInlineWrap.classList.add('is-open');
-    dateGroup.classList.add('is-expanded');
-    dateTrigger.setAttribute('aria-expanded', 'true');
-  }
   
   // Time group (same structure as add form)
   const timeGroup = document.createElement('div');
@@ -395,16 +386,14 @@ const createEditForm = (taskData, card) => {
   hourList.setAttribute('role', 'listbox');
   hourList.setAttribute('aria-label', t('task.hours'));
   
-  if (!ios) {
-    for (let h = 0; h < 24; h++) {
-      const hourOption = document.createElement('button');
-      hourOption.className = 'task-form__time-option';
-      hourOption.type = 'button';
-      hourOption.setAttribute('role', 'option');
-      hourOption.textContent = String(h).padStart(2, '0');
-      hourOption.dataset.value = String(h).padStart(2, '0');
-      hourList.appendChild(hourOption);
-    }
+  for (let h = 0; h < 24; h++) {
+    const hourOption = document.createElement('button');
+    hourOption.className = 'task-form__time-option';
+    hourOption.type = 'button';
+    hourOption.setAttribute('role', 'option');
+    hourOption.textContent = String(h).padStart(2, '0');
+    hourOption.dataset.value = String(h).padStart(2, '0');
+    hourList.appendChild(hourOption);
   }
   
   hourColumn.appendChild(hourTitle);
@@ -423,16 +412,14 @@ const createEditForm = (taskData, card) => {
   minuteList.setAttribute('role', 'listbox');
   minuteList.setAttribute('aria-label', t('task.minutes'));
   
-  if (!ios) {
-    for (let m = 0; m < 60; m += 5) {
-      const minuteOption = document.createElement('button');
-      minuteOption.className = 'task-form__time-option';
-      minuteOption.type = 'button';
-      minuteOption.setAttribute('role', 'option');
-      minuteOption.textContent = String(m).padStart(2, '0');
-      minuteOption.dataset.value = String(m).padStart(2, '0');
-      minuteList.appendChild(minuteOption);
-    }
+  for (let m = 0; m < 60; m += 5) {
+    const minuteOption = document.createElement('button');
+    minuteOption.className = 'task-form__time-option';
+    minuteOption.type = 'button';
+    minuteOption.setAttribute('role', 'option');
+    minuteOption.textContent = String(m).padStart(2, '0');
+    minuteOption.dataset.value = String(m).padStart(2, '0');
+    minuteList.appendChild(minuteOption);
   }
   
   minuteColumn.appendChild(minuteTitle);
@@ -483,7 +470,6 @@ const createEditForm = (taskData, card) => {
   
   // Initialize flatpickr for date
   setTimeout(() => {
-    if (ios) return;
     if (flatpickr && dateInput && dateInlineHost) {
       const today = new Date();
       today.setHours(0, 0, 0, 0);
@@ -641,11 +627,6 @@ const createEditForm = (taskData, card) => {
   };
 
   dateTrigger.addEventListener('click', () => {
-    if (ios) {
-      dateInput?.showPicker?.();
-      dateInput?.focus?.();
-      return;
-    }
     const isOpen = dateInlineWrap.classList.contains('is-open');
     if (isOpen) {
       closeExpandable(dateInlineWrap);
@@ -673,11 +654,6 @@ const createEditForm = (taskData, card) => {
   let selectedMinute = time ? time.split(':')[1] : '';
   
   timeTrigger.addEventListener('click', () => {
-    if (ios) {
-      timeInput?.showPicker?.();
-      timeInput?.focus?.();
-      return;
-    }
     const isOpen = timeInlineWrap.classList.contains('is-open');
     if (isOpen) {
       closeExpandable(timeInlineWrap);

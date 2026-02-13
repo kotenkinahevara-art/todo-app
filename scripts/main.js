@@ -4,7 +4,6 @@ import { addTaskToList, toggleEmptyState } from './modules/task-card.js';
 import { initTaskViewSwitcher } from './modules/task-view-switcher.js';
 import { initLanguageSwitcher } from './modules/language-switcher.js';
 import { initI18n, onI18nChange } from './i18n/index.js';
-import { isIOS } from './utils/platform.js';
 
 const clearTaskLists = () => {
   const activeList = document.getElementById('active-tasks-list');
@@ -29,9 +28,6 @@ const renderTasks = () => {
 const initApp = () => {
   initI18n();
   initLanguageSwitcher();
-  if (isIOS()) {
-    document.documentElement.classList.add('is-ios');
-  }
 
   // Initialize task form
   initTaskForm();

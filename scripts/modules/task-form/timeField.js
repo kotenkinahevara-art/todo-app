@@ -1,7 +1,6 @@
 import { getEmptyValue } from './formatters.js';
 import { closeExpandable, openExpandable } from './expandable.js';
 import { onI18nChange, t } from '../../i18n/index.js';
-import { isIOS } from '../../utils/platform.js';
 
 const COLLAPSE_MS = 280;
 
@@ -111,11 +110,6 @@ export const createTimeField = (dom) => {
   };
 
   const toggle = () => {
-    if (isIOS()) {
-      timeInput?.showPicker?.();
-      timeInput?.focus?.();
-      return true;
-    }
     if (isOpen()) {
       close();
       return false;
@@ -252,21 +246,6 @@ export const createTimeField = (dom) => {
   };
 
   const init = () => {
-    if (isIOS()) {
-      if (timeInput) timeInput.type = 'time';
-      if (timeInlineWrap) {
-        timeInlineWrap.setAttribute('role', 'region');
-        timeInlineWrap.setAttribute('aria-label', t('task.time'));
-      }
-      const updateTexts = () => {
-        if (timeConfirmButton) timeConfirmButton.textContent = t('task.choose_time');
-      };
-      updateTexts();
-      onI18nChange(updateTexts);
-      timeInput?.addEventListener('change', syncSelectionFromInput);
-      return;
-    }
-
     buildTimeOptions();
     syncSelectionFromInput();
 
