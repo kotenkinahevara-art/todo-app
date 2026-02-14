@@ -18,17 +18,17 @@
             <img class="header__icon icon" src="./icons/calendar-event.svg" alt="ToDo icon">
         </div>
         <nav class="language-switcher" aria-label="Language switcher">
-            <button class="language-switcher__button" type="button" data-locale="ru" aria-pressed="false">Р СѓСЃ</button>
+            <button class="language-switcher__button" type="button" data-locale="ru" aria-pressed="false">Rus</button>
             <button class="language-switcher__button" type="button" data-locale="en" aria-pressed="false">Eng</button>
         </nav>
     </header>
 
     <main class="main container">
-        <section class="tasks" aria-label="РЈРїСЂР°РІР»РµРЅРёРµ Р·Р°РґР°С‡Р°РјРё">
-            <h2 class="section-title">Р—Р°РґР°С‡Рё</h2>
+        <section class="tasks" aria-label="Task management">
+            <h2 class="section-title">Tasks</h2>
             <div class="tasks__card">
                 <button class="tasks__add-button" id="open-task-form" type="button" aria-expanded="false" aria-controls="task-form-wrap">
-                    <span class="tasks__add-button-text">Р”РѕР±Р°РІРёС‚СЊ РЅРѕРІСѓСЋ Р·Р°РґР°С‡Сѓ</span>
+                    <span class="tasks__add-button-text">Add new task</span>
                     <img class="tasks__add-button-icon icon" src="./icons/add-plus-circle.svg" alt="" aria-hidden="true">
                 </button>
 
@@ -42,14 +42,14 @@
                             </label>
 
                             <label class="task-form__field task-form__field_type_description">
-                                <span class="task-form__field-label">РћРїРёСЃР°РЅРёРµ</span>
-                                <textarea class="task-form__textarea" id="task-description" name="description" rows="3" aria-label="РћРїРёСЃР°РЅРёРµ"></textarea>
+                                <span class="task-form__field-label">Description</span>
+                                <textarea class="task-form__textarea" id="task-description" name="description" rows="3" aria-label="Description"></textarea>
                                 <img class="task-form__field-icon icon" src="./icons/edit-pencil.svg" alt="" aria-hidden="true">
                             </label>
 
                             <div class="task-form__priority-group">
                                 <div class="task-form__field task-form__field_type_priority">
-                                    <span class="task-form__field-label">РџСЂРёРѕСЂРёС‚РµС‚</span>
+                                    <span class="task-form__field-label">Priority</span>
                                     <button
                                         class="task-form__picker"
                                         type="button"
@@ -57,7 +57,7 @@
                                         aria-controls="task-priority-inline-wrap"
                                         aria-expanded="false"
                                     >
-                                        <span id="selected-priority">РЎСЂРµРґРЅРёР№</span>
+                                        <span id="selected-priority">Medium</span>
                                     </button>
                                     <img class="task-form__field-icon icon" src="./icons/chevron-left-right.svg" alt="" aria-hidden="true">
                                     <input class="task-form__native-picker" id="task-priority" name="priority" type="hidden" value="medium">
@@ -69,7 +69,7 @@
 
                             <div class="task-form__date-group">
                                 <div class="task-form__field">
-                                    <span class="task-form__field-label">Р”Р°С‚Р°</span>
+                                    <span class="task-form__field-label">Date</span>
                                     <button
                                         class="task-form__picker"
                                         type="button"
@@ -77,7 +77,7 @@
                                         aria-controls="task-date-inline-wrap"
                                         aria-expanded="false"
                                     >
-                                        <span id="selected-date">РќРµ РІС‹Р±СЂР°РЅРѕ</span>
+                                        <span id="selected-date">Not selected</span>
                                     </button>
                                     <img class="task-form__field-icon icon" src="./icons/calendar-days.svg" alt="" aria-hidden="true">
                                 </div>
@@ -85,14 +85,14 @@
                                     <input class="task-form__native-picker" id="task-date" name="date" type="text" autocomplete="off">
                                     <div class="task-form__calendar-host" id="task-date-inline"></div>
                                     <button class="task-form__date-confirm" id="confirm-task-date" type="button">
-                                        Р’С‹Р±СЂР°С‚СЊ РґР°С‚Сѓ
+                                        Choose date
                                     </button>
                                 </div>
                             </div>
 
                             <div class="task-form__time-group">
                                 <div class="task-form__field">
-                                    <span class="task-form__field-label">Р’СЂРµРјСЏ</span>
+                                    <span class="task-form__field-label">Time</span>
                                     <button
                                         class="task-form__picker"
                                         type="button"
@@ -100,7 +100,7 @@
                                         aria-controls="task-time-inline-wrap"
                                         aria-expanded="false"
                                     >
-                                        <span id="selected-time">РќРµ РІС‹Р±СЂР°РЅРѕ</span>
+                                        <span id="selected-time">Not selected</span>
                                     </button>
                                     <img class="task-form__field-icon icon" src="./icons/clock.svg" alt="" aria-hidden="true">
                                     <input class="task-form__native-picker" id="task-time" name="time" type="time">
@@ -108,26 +108,26 @@
                                 <div class="task-form__time-inline" id="task-time-inline-wrap" hidden>
                                     <div class="task-form__time-columns">
                                         <div class="task-form__time-column">
-                                            <div class="task-form__time-column-title">Р§Р°СЃС‹</div>
+                                            <div class="task-form__time-column-title">Hours</div>
                                             <div class="task-form__time-list" id="task-hour-list"></div>
                                         </div>
                                         <div class="task-form__time-column">
-                                            <div class="task-form__time-column-title">РњРёРЅСѓС‚С‹</div>
+                                            <div class="task-form__time-column-title">Minutes</div>
                                             <div class="task-form__time-list" id="task-minute-list"></div>
                                         </div>
                                     </div>
                                     <button class="task-form__time-confirm" id="confirm-task-time" type="button">
-                                        Р’С‹Р±СЂР°С‚СЊ РІСЂРµРјСЏ
+                                        Choose time
                                     </button>
                                 </div>
                             </div>
 
                             <div class="task-form__actions">
                                 <button class="task-form__action-button task-form__action-button_theme_cancel" id="cancel-task-form" type="button">
-                                    РћС‚РјРµРЅР°
+                                    Cancel
                                 </button>
                                 <button class="task-form__action-button task-form__action-button_theme_add" type="submit">
-                                    Р”РѕР±Р°РІРёС‚СЊ
+                                    Add
                                 </button>
                             </div>
                         </form>
@@ -137,19 +137,19 @@
         </section>
 
         <section class="tasks-view">
-            <div class="tasks-view__tabs" role="tablist" aria-label="Р’С‹Р±РѕСЂ СЃРїРёСЃРєР° Р·Р°РґР°С‡">
-                <button class="tasks-view__tab tasks-view__tab_state_active" id="tasks-tab-active" type="button" role="tab" data-view="active" aria-controls="active-tasks-panel" aria-selected="true">РђРєС‚РёРІРЅС‹Рµ Р·Р°РґР°С‡Рё</button>
-                <button class="tasks-view__tab" id="tasks-tab-completed" type="button" role="tab" data-view="completed" aria-controls="completed-tasks-panel" aria-selected="false">Р’С‹РїРѕР»РЅРµРЅРЅС‹Рµ Р·Р°РґР°С‡Рё</button>
+            <div class="tasks-view__tabs" role="tablist" aria-label="Task list selector">
+                <button class="tasks-view__tab tasks-view__tab_state_active" id="tasks-tab-active" type="button" role="tab" data-view="active" aria-controls="active-tasks-panel" aria-selected="true">Active tasks</button>
+                <button class="tasks-view__tab" id="tasks-tab-completed" type="button" role="tab" data-view="completed" aria-controls="completed-tasks-panel" aria-selected="false">Completed tasks</button>
             </div>
             <div class="tasks-view__panels">
                 <div class="tasks-view__panel tasks-view__panel_state_active" id="active-tasks-panel" role="tabpanel" aria-labelledby="tasks-tab-active" data-view-panel="active">
-                    <h1 class="section-title tasks-view__panel-title">РђРєС‚РёРІРЅС‹Рµ Р·Р°РґР°С‡Рё</h1>
-                    <p class="tasks-view__empty active-tasks__empty" role="status" aria-live="polite" aria-atomic="true">РџРѕРєР° РЅРµС‚ Р°РєС‚РёРІРЅС‹С… Р·Р°РґР°С‡...</p>
+                    <h1 class="section-title tasks-view__panel-title">Active tasks</h1>
+                    <p class="tasks-view__empty active-tasks__empty" role="status" aria-live="polite" aria-atomic="true">No active tasks yet...</p>
                     <div class="tasks-view__list active-tasks__list" id="active-tasks-list"></div>
                 </div>
                 <div class="tasks-view__panel" id="completed-tasks-panel" role="tabpanel" aria-labelledby="tasks-tab-completed" data-view-panel="completed" hidden>
-                    <h1 class="section-title tasks-view__panel-title">Р’С‹РїРѕР»РЅРµРЅРЅС‹Рµ Р·Р°РґР°С‡Рё</h1>
-                    <p class="tasks-view__empty completed-tasks__empty" role="status" aria-live="polite" aria-atomic="true">Р’С‹РїРѕР»РЅРµРЅРЅС‹Рµ Р·Р°РґР°С‡Рё РѕС‚СЃСѓС‚СЃС‚РІСѓСЋС‚...</p>
+                    <h1 class="section-title tasks-view__panel-title">Completed tasks</h1>
+                    <p class="tasks-view__empty completed-tasks__empty" role="status" aria-live="polite" aria-atomic="true">No completed tasks yet...</p>
                     <div class="tasks-view__list completed-tasks__list" id="completed-tasks-list"></div>
                 </div>
             </div>
@@ -161,7 +161,7 @@
         <article class="task-card">
             <div class="task-card__header">
                 <h3 class="task-card__title"></h3>
-                <button class="task-card__edit-button" type="button" aria-label="Р РµРґР°РєС‚РёСЂРѕРІР°С‚СЊ Р·Р°РґР°С‡Сѓ">
+                <button class="task-card__edit-button" type="button" aria-label="Edit task">
                     <img class="icon" src="./icons/edit-pencil.svg" alt="" aria-hidden="true">
                 </button>
             </div>
@@ -176,12 +176,12 @@
                         <span class="task-card__priority"></span>
                     </div>
                     <div class="task-card__footer-bottom">
-                        <button class="task-card__delete-button" type="button" aria-label="РЈРґР°Р»РёС‚СЊ Р·Р°РґР°С‡Сѓ">
-                            <span class="task-card__delete-text">РЈРґР°Р»РёС‚СЊ</span>
+                        <button class="task-card__delete-button" type="button" aria-label="Delete task">
+                            <span class="task-card__delete-text">Delete</span>
                             <img class="task-card__icon icon" src="./icons/remove.svg" alt="" aria-hidden="true">
                         </button>
-                        <button class="task-card__complete-button" type="button" aria-label="РћС‚РјРµС‚РёС‚СЊ РєР°Рє РІС‹РїРѕР»РЅРµРЅРѕ">
-                            <span class="task-card__complete-text">РЇ РІС‹РїРѕР»РЅРёР»(Р°)</span>
+                        <button class="task-card__complete-button" type="button" aria-label="Mark as completed">
+                            <span class="task-card__complete-text">Done</span>
                             <img class="task-card__icon icon" src="./icons/check.svg" alt="" aria-hidden="true">
                         </button>
                     </div>
@@ -191,7 +191,3 @@
     </template>
 </body>
 </html>
-
-
-
-
