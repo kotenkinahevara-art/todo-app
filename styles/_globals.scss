@@ -1,9 +1,11 @@
-﻿﻿@use 'helpers' as *;
+﻿@use 'helpers' as *;
 
 html {
   min-height: 100%;
   background: var(--color-background);
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 
   &.is-lock {
     overflow: hidden;
@@ -59,4 +61,27 @@ h6, .h6 {
   font-weight: 300;
   color: var(--color-dark-50);
   font-size: #{fluid(20, 16)};
+}
+
+@supports (-webkit-touch-callout: none) {
+  .task-form__text-input,
+  .task-form__textarea,
+  .task-form__picker,
+  .task-form__time-option,
+  .task-form__date-confirm,
+  .task-form__time-confirm,
+  .fp-custom-dropdown__trigger,
+  .fp-custom-dropdown__option {
+    font-size: 16px;
+  }
+
+  .task-form__text-input,
+  .task-form__textarea,
+  .task-form__picker,
+  .task-form__time-option,
+  .fp-custom-dropdown__trigger,
+  .fp-custom-dropdown__option {
+    -webkit-appearance: none;
+    appearance: none;
+  }
 }
