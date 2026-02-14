@@ -355,6 +355,33 @@ h6, .h6 {
     appearance: none;
   }
 }
+@media (max-width: 48rem), (pointer: coarse) {
+  .tasks__form-wrap,
+  .task-form__inline,
+  .task-form__priority-inline,
+  .task-form__time-inline,
+  .fp-custom-dropdown__panel {
+    transition: none;
+    transform: none;
+  }
+  .fp-custom-dropdown__trigger,
+  .fp-custom-dropdown__panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .task-form__calendar-host .flatpickr-calendar,
+  .task-form__time-option,
+  .task-form__field,
+  .task-form__inline,
+  .task-form__priority-inline,
+  .task-form__time-inline {
+    box-shadow: none;
+  }
+  .task-form__time-list,
+  .fp-custom-dropdown__panel {
+    -webkit-overflow-scrolling: touch;
+  }
+}
 .header {
   margin-top: clamp(1.5625rem, 1.243872549rem + 1.3071895425vw, 2.8125rem);
   width: 100%;

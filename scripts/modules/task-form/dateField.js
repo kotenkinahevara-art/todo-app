@@ -4,6 +4,12 @@ import { closeExpandable, openExpandable } from './expandable.js';
 
 const YEAR_RANGE = 30;
 const COLLAPSE_MS = 280;
+const MOBILE_MEDIA_QUERY = '(max-width: 48rem), (pointer: coarse)';
+
+const shouldUseCustomMonthYearDropdowns = () => {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return true;
+  return !window.matchMedia(MOBILE_MEDIA_QUERY).matches;
+};
 
 const getYearBounds = (instance, currentYear) => {
   const minDateYear = instance.config.minDate instanceof Date ? instance.config.minDate.getFullYear() : currentYear - YEAR_RANGE;
@@ -298,6 +304,8 @@ export const createDateField = (dom) => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
+    const useCustomMonthYear = shouldUseCustomMonthYearDropdowns();
+
     datePickerInstance = flatpickrApi(dateInput, {
       locale,
       disableMobile: true,
@@ -307,13 +315,19 @@ export const createDateField = (dom) => {
       minDate: today,
       dateFormat: 'Y-m-d',
       onReady: (_, __, instance) => {
-        setupCustomMonthYearDropdowns(instance);
+        if (useCustomMonthYear) {
+          setupCustomMonthYearDropdowns(instance);
+        }
       },
       onMonthChange: (_, __, instance) => {
-        setupCustomMonthYearDropdowns(instance);
+        if (useCustomMonthYear) {
+          setupCustomMonthYearDropdowns(instance);
+        }
       },
       onYearChange: (_, __, instance) => {
-        setupCustomMonthYearDropdowns(instance);
+        if (useCustomMonthYear) {
+          setupCustomMonthYearDropdowns(instance);
+        }
       },
       onChange: (_, dateStr) => {
         if (dateText) {
@@ -327,7 +341,9 @@ export const createDateField = (dom) => {
       const nextLocaleCode = getLocale();
       const nextLocale = nextLocaleCode === 'ru' ? flatpickrApi.l10ns?.ru ?? 'ru' : undefined;
       datePickerInstance.set('locale', nextLocale);
-      setupCustomMonthYearDropdowns(datePickerInstance);
+      if (useCustomMonthYear) {
+        setupCustomMonthYearDropdowns(datePickerInstance);
+      }
     };
 
     dateConfirmButton?.addEventListener('click', confirm);

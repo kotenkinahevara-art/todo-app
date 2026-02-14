@@ -1,4 +1,17 @@
 const TRANSITION_FALLBACK_MS = 280;
+const NO_TRANSITION_MS = 0;
+
+const hasTransition = (element) => {
+  if (!(element instanceof HTMLElement)) return false;
+
+  const style = window.getComputedStyle(element);
+  const durations = style.transitionDuration.split(',').map((value) => Number.parseFloat(value) || 0);
+  const delays = style.transitionDelay.split(',').map((value) => Number.parseFloat(value) || 0);
+
+  const maxDuration = Math.max(...durations, 0);
+  const maxDelay = Math.max(...delays, 0);
+  return maxDuration + maxDelay > NO_TRANSITION_MS;
+};
 
 export const openExpandable = (element) => {
   if (!(element instanceof HTMLElement)) return;
@@ -37,6 +50,11 @@ export const closeExpandable = (element) => {
     if (event.target !== element) return;
     complete();
   };
+
+  if (!hasTransition(element)) {
+    complete();
+    return;
+  }
 
   element.addEventListener('transitionend', onTransitionEnd);
   element._closeTimerId = window.setTimeout(complete, TRANSITION_FALLBACK_MS);
