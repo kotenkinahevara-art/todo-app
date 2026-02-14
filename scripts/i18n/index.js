@@ -52,7 +52,7 @@ const applyStaticTranslations = () => {
   setText('.tasks .section-title', 'tasks.section_title');
   setText('.tasks__add-button-text', 'tasks.add_new');
 
-  setText('#task-form > .task-form__field .task-form__field-label', 'task.title');
+  setText('#task-title-label', 'task.title');
   setAttr('#task-title', 'aria-label', 'task.title');
   setText('.task-form__field_type_description .task-form__field-label', 'task.description');
   setAttr('#task-description', 'aria-label', 'task.description');
