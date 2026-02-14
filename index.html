@@ -18,17 +18,17 @@
             <img class="header__icon icon" src="./icons/calendar-event.svg" alt="ToDo icon">
         </div>
         <nav class="language-switcher" aria-label="Language switcher">
-            <button class="language-switcher__button" type="button" data-locale="ru" aria-pressed="false">Rus</button>
+            <button class="language-switcher__button" type="button" data-locale="ru" aria-pressed="false">Рус</button>
             <button class="language-switcher__button" type="button" data-locale="en" aria-pressed="false">Eng</button>
         </nav>
     </header>
 
     <main class="main container">
-        <section class="tasks" aria-label="Task management">
-            <h2 class="section-title">Tasks</h2>
+        <section class="tasks" aria-label="Управление задачами">
+            <h2 class="section-title">Задачи</h2>
             <div class="tasks__card">
                 <button class="tasks__add-button" id="open-task-form" type="button" aria-expanded="false" aria-controls="task-form-wrap">
-                    <span class="tasks__add-button-text">Add new task</span>
+                    <span class="tasks__add-button-text">Добавить новую задачу</span>
                     <img class="tasks__add-button-icon icon" src="./icons/add-plus-circle.svg" alt="" aria-hidden="true">
                 </button>
 
@@ -36,20 +36,20 @@
                     <section class="task-form">
                         <form class="task-form__body" id="task-form">
                             <label class="task-form__field">
-                                <span class="task-form__field-label" id="task-title-label">Title</span>
-                                <input class="task-form__text-input" id="task-title" name="title" type="text" aria-label="Title" required>
+                                <span class="task-form__field-label" id="task-title-label">Название</span>
+                                <input class="task-form__text-input" id="task-title" name="title" type="text" aria-label="Название" required>
                                 <img class="task-form__field-icon icon" src="./icons/edit-pencil.svg" alt="" aria-hidden="true">
                             </label>
 
                             <label class="task-form__field task-form__field_type_description">
-                                <span class="task-form__field-label">Description</span>
-                                <textarea class="task-form__textarea" id="task-description" name="description" rows="3" aria-label="Description"></textarea>
+                                <span class="task-form__field-label">Описание</span>
+                                <textarea class="task-form__textarea" id="task-description" name="description" rows="3" aria-label="Описание"></textarea>
                                 <img class="task-form__field-icon icon" src="./icons/edit-pencil.svg" alt="" aria-hidden="true">
                             </label>
 
                             <div class="task-form__priority-group">
                                 <div class="task-form__field task-form__field_type_priority">
-                                    <span class="task-form__field-label">Priority</span>
+                                    <span class="task-form__field-label">Приоритет</span>
                                     <button
                                         class="task-form__picker"
                                         type="button"
@@ -57,7 +57,7 @@
                                         aria-controls="task-priority-inline-wrap"
                                         aria-expanded="false"
                                     >
-                                        <span id="selected-priority">Medium</span>
+                                        <span id="selected-priority">Средний</span>
                                     </button>
                                     <img class="task-form__field-icon icon" src="./icons/chevron-left-right.svg" alt="" aria-hidden="true">
                                     <input class="task-form__native-picker" id="task-priority" name="priority" type="hidden" value="medium">
@@ -69,7 +69,7 @@
 
                             <div class="task-form__date-group">
                                 <div class="task-form__field">
-                                    <span class="task-form__field-label">Date</span>
+                                    <span class="task-form__field-label">Дата</span>
                                     <button
                                         class="task-form__picker"
                                         type="button"
@@ -77,7 +77,7 @@
                                         aria-controls="task-date-inline-wrap"
                                         aria-expanded="false"
                                     >
-                                        <span id="selected-date">Not selected</span>
+                                        <span id="selected-date">Не выбрано</span>
                                     </button>
                                     <img class="task-form__field-icon icon" src="./icons/calendar-days.svg" alt="" aria-hidden="true">
                                 </div>
@@ -85,14 +85,14 @@
                                     <input class="task-form__native-picker" id="task-date" name="date" type="text" autocomplete="off">
                                     <div class="task-form__calendar-host" id="task-date-inline"></div>
                                     <button class="task-form__date-confirm" id="confirm-task-date" type="button">
-                                        Choose date
+                                        Выбрать дату
                                     </button>
                                 </div>
                             </div>
 
                             <div class="task-form__time-group">
                                 <div class="task-form__field">
-                                    <span class="task-form__field-label">Time</span>
+                                    <span class="task-form__field-label">Время</span>
                                     <button
                                         class="task-form__picker"
                                         type="button"
@@ -100,7 +100,7 @@
                                         aria-controls="task-time-inline-wrap"
                                         aria-expanded="false"
                                     >
-                                        <span id="selected-time">Not selected</span>
+                                        <span id="selected-time">Не выбрано</span>
                                     </button>
                                     <img class="task-form__field-icon icon" src="./icons/clock.svg" alt="" aria-hidden="true">
                                     <input class="task-form__native-picker" id="task-time" name="time" type="time">
@@ -108,23 +108,23 @@
                                 <div class="task-form__time-inline" id="task-time-inline-wrap" hidden>
                                     <div class="task-form__time-columns">
                                         <div class="task-form__time-column">
-                                            <div class="task-form__time-column-title">Hours</div>
+                                            <div class="task-form__time-column-title">Часы</div>
                                             <div class="task-form__time-list" id="task-hour-list"></div>
                                         </div>
                                         <div class="task-form__time-column">
-                                            <div class="task-form__time-column-title">Minutes</div>
+                                            <div class="task-form__time-column-title">Минуты</div>
                                             <div class="task-form__time-list" id="task-minute-list"></div>
                                         </div>
                                     </div>
                                     <button class="task-form__time-confirm" id="confirm-task-time" type="button">
-                                        Choose time
+                                        Выбрать время
                                     </button>
                                 </div>
                             </div>
 
                             <div class="task-form__actions">
                                 <button class="task-form__action-button task-form__action-button_theme_cancel" id="cancel-task-form" type="button">
-                                    Cancel
+                                    Отмена
                                 </button>
                                 <button class="task-form__action-button task-form__action-button_theme_add" type="submit">
                                     Add
@@ -137,19 +137,19 @@
         </section>
 
         <section class="tasks-view">
-            <div class="tasks-view__tabs" role="tablist" aria-label="Task list selector">
-                <button class="tasks-view__tab tasks-view__tab_state_active" id="tasks-tab-active" type="button" role="tab" data-view="active" aria-controls="active-tasks-panel" aria-selected="true">Active tasks</button>
-                <button class="tasks-view__tab" id="tasks-tab-completed" type="button" role="tab" data-view="completed" aria-controls="completed-tasks-panel" aria-selected="false">Completed tasks</button>
+            <div class="tasks-view__tabs" role="tablist" aria-label="Выбор списка задач">
+                <button class="tasks-view__tab tasks-view__tab_state_active" id="tasks-tab-active" type="button" role="tab" data-view="active" aria-controls="active-tasks-panel" aria-selected="true">Активные задачи</button>
+                <button class="tasks-view__tab" id="tasks-tab-completed" type="button" role="tab" data-view="completed" aria-controls="completed-tasks-panel" aria-selected="false">Выполненные задачи</button>
             </div>
             <div class="tasks-view__panels">
                 <div class="tasks-view__panel tasks-view__panel_state_active" id="active-tasks-panel" role="tabpanel" aria-labelledby="tasks-tab-active" data-view-panel="active">
-                    <h1 class="section-title tasks-view__panel-title">Active tasks</h1>
-                    <p class="tasks-view__empty active-tasks__empty" role="status" aria-live="polite" aria-atomic="true">No active tasks yet...</p>
+                    <h1 class="section-title tasks-view__panel-title">Активные задачи</h1>
+                    <p class="tasks-view__empty active-tasks__empty" role="status" aria-live="polite" aria-atomic="true">Пока нет активных задач...</p>
                     <div class="tasks-view__list active-tasks__list" id="active-tasks-list"></div>
                 </div>
                 <div class="tasks-view__panel" id="completed-tasks-panel" role="tabpanel" aria-labelledby="tasks-tab-completed" data-view-panel="completed" hidden>
-                    <h1 class="section-title tasks-view__panel-title">Completed tasks</h1>
-                    <p class="tasks-view__empty completed-tasks__empty" role="status" aria-live="polite" aria-atomic="true">No completed tasks yet...</p>
+                    <h1 class="section-title tasks-view__panel-title">Выполненные задачи</h1>
+                    <p class="tasks-view__empty completed-tasks__empty" role="status" aria-live="polite" aria-atomic="true">Выполненные задачи отсутствуют...</p>
                     <div class="tasks-view__list completed-tasks__list" id="completed-tasks-list"></div>
                 </div>
             </div>
@@ -161,7 +161,7 @@
         <article class="task-card">
             <div class="task-card__header">
                 <h3 class="task-card__title"></h3>
-                <button class="task-card__edit-button" type="button" aria-label="Edit task">
+                <button class="task-card__edit-button" type="button" aria-label="Редактировать задачу">
                     <img class="icon" src="./icons/edit-pencil.svg" alt="" aria-hidden="true">
                 </button>
             </div>
@@ -176,12 +176,12 @@
                         <span class="task-card__priority"></span>
                     </div>
                     <div class="task-card__footer-bottom">
-                        <button class="task-card__delete-button" type="button" aria-label="Delete task">
-                            <span class="task-card__delete-text">Delete</span>
+                        <button class="task-card__delete-button" type="button" aria-label="Удалить задачу">
+                            <span class="task-card__delete-text">Удалить</span>
                             <img class="task-card__icon icon" src="./icons/remove.svg" alt="" aria-hidden="true">
                         </button>
-                        <button class="task-card__complete-button" type="button" aria-label="Mark as completed">
-                            <span class="task-card__complete-text">Done</span>
+                        <button class="task-card__complete-button" type="button" aria-label="Отметить как выполнено">
+                            <span class="task-card__complete-text">Я выполнил(а)</span>
                             <img class="task-card__icon icon" src="./icons/check.svg" alt="" aria-hidden="true">
                         </button>
                     </div>
@@ -191,3 +191,4 @@
     </template>
 </body>
 </html>
+
